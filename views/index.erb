@@ -1,8 +1,7 @@
 <h2>Home</h2>
-<p><%= @hello%></p>
 
 <h3>Add Company</h3>
-<form action="/index" method="post">
+<form action="/index/company/new" method="post">
     <label>Company Name:</label>
     <input type="text" name="name">
     <label>Company Email: </label>
@@ -12,7 +11,7 @@
 
 
 <h3>Add Subscriber</h3>
-<form action="/index" method="post">
+<form action="/index/subscriber/new" method="post">
     <label>Subscriber Name:</label>
     <input type="text" name="name">
     <label>Subscriber Email: </label>
@@ -24,15 +23,25 @@
 <hr>
 
 <H2>Listed companies</H2>
+<% if @companies.any?() %>
 <ul>
     <% @companies.each do |company| %>
-    <li><%= company.name %></li>
-    <li><%= company.email %></li>
+        <li><%= company.name %></li>
+        <li><%= company.email %></li>
+    <% end %>
 </ul>
+<% else %>
+    <p>No companies added</p>
+<% end %>
 
 <h2>Listed Subscribers</h2>
-<ul>
-    <% @subsribers.each do |subsriber| %>
-    <li><%= subsriber.name %></li>
-    <li><%= subsriber.email %></li>
-</ul>
+<% if @subscribers.any?()%>
+    <ul>
+        <% @subscribers.each do |subscriber| %>
+            <li><%= subscriber.name %></li>
+            <li><%= subscriber.email %></li>
+        <% end %>
+    </ul>
+<% else%>
+    <p>No added subscribers yet</p>
+<% end %>

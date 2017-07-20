@@ -1,3 +1,3 @@
-class Company< ActiveRecord::Base
+class Company < ActiveRecord::Base
     has_many :subscribers, through: :subscriptions
 end
