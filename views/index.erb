@@ -26,8 +26,10 @@
 <% if @companies.any?() %>
 <ul>
     <% @companies.each do |company| %>
-        <li><%= company.name %></li>
-        <li><%= company.email %></li>
+        <a href="/company">
+            <li><%= company.name %></li>
+            <li><%= company.email %></li>
+        </a>
     <% end %>
 </ul>
 <% else %>
@@ -38,8 +40,10 @@
 <% if @subscribers.any?()%>
     <ul>
         <% @subscribers.each do |subscriber| %>
-            <li><%= subscriber.name %></li>
-            <li><%= subscriber.email %></li>
+            <a href="/subscriber/<%= subscriber.id%>">
+                <li><%= subscriber.name %></li>
+                <li><%= subscriber.email %></li>
+            </a>
         <% end %>
     </ul>
 <% else%>

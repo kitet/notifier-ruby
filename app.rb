@@ -25,3 +25,17 @@ post '/index/subscriber/new' do
     redirect '/'
 end
 
+get '/subscriber/:id' do
+    @subscriber=Subscriber.find(params.fetch('id').to_i())
+    @companies=Company.all
+    @companies_subscribed_to=Subscription.all
+    erb :subscriber
+end
+
+#subscription connection 
+post '/subscriber/:id' do
+    @company_id=params.fetch('select').to_i
+    @subscriber_id=params.fetch('id').to_i
+    Subscription.create(company_id: @company_id, subscriber_id: @subscriber_id)
+    redirect '/subscriber/#{@subscriber_id}'
+end
