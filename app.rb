@@ -28,7 +28,7 @@ end
 get '/subscriber/:id' do
     @subscriber=Subscriber.find(params.fetch('id').to_i())
     @companies=Company.all
-    @companies_subscribed_to=Subscription.all
+    @interest=Company.joins(:subscriptions).where(subscriptions: {subscriber_id: @subscriber.id})
     erb :subscriber
 end
 
@@ -37,5 +37,5 @@ post '/subscriber/:id' do
     @company_id=params.fetch('select').to_i
     @subscriber_id=params.fetch('id').to_i
     Subscription.create(company_id: @company_id, subscriber_id: @subscriber_id)
-    redirect '/subscriber/#{@subscriber_id}'
+    redirect '/subscriber/'.concat(@subscriber_id.to_s)
 end

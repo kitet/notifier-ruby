@@ -11,9 +11,9 @@
 </form>
 <hr>
 <h3>Companies Subscribed To:</h3>
-<% if @companies_subscribed_to.any?() %>
-    <% @companies_subscribed_to.each do |company|%>
-        <%= company.company_id%>
+<% if @interest.any?() %>
+    <% @interest.each do |item|%>
+        <%= item.name%>
     <%end%>
 <% else%>
     <p>No companies subscribed to</p>
